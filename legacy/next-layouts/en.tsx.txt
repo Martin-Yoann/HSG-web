@@ -1,0 +1,19 @@
+import type { ReactNode } from 'react';
+import { HeaderEn } from '@/components/HeaderEn';
+import { FooterEn } from '@/components/FooterEn';
+import { SiteEffects } from '@/components/SiteEffects';
+import { siteMetadata } from '@/lib/site';
+import '@/styles/site.css';
+
+export const metadata = siteMetadata;
+export { viewport } from '@/lib/site';
+
+export default function EnglishLayout({ children }: { children: ReactNode }) {
+  return <html lang="en"><body>
+    <a className="sr-only" href="#main">Skip to content</a>
+    <HeaderEn />
+    {children}
+    <FooterEn />
+    <SiteEffects />
+  </body></html>;
+}

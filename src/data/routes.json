@@ -1,0 +1,170 @@
+[
+  {
+    "route": "/about/",
+    "source": "about/index.html",
+    "page": "src/content/zh/about/page.tsx",
+    "locale": "zh",
+    "title": "关于我们 · Happy Global Service"
+  },
+  {
+    "route": "/contact/",
+    "source": "contact/index.html",
+    "page": "src/content/zh/contact/page.tsx",
+    "locale": "zh",
+    "title": "联系我们 · Happy Global Service"
+  },
+  {
+    "route": "/ecosystem/",
+    "source": "ecosystem/index.html",
+    "page": "src/content/zh/ecosystem/page.tsx",
+    "locale": "zh",
+    "title": "Happy Global 体系 · Happy Global Service"
+  },
+  {
+    "route": "/en/about/",
+    "source": "en/about/index.html",
+    "page": "src/content/en/about/page.tsx",
+    "locale": "en",
+    "title": "About · Happy Global Service"
+  },
+  {
+    "route": "/en/contact/",
+    "source": "en/contact/index.html",
+    "page": "src/content/en/contact/page.tsx",
+    "locale": "en",
+    "title": "Contact · Happy Global Service"
+  },
+  {
+    "route": "/en/ecosystem/",
+    "source": "en/ecosystem/index.html",
+    "page": "src/content/en/ecosystem/page.tsx",
+    "locale": "en",
+    "title": "Our Network · Happy Global Service"
+  },
+  {
+    "route": "/en/faq/",
+    "source": "en/faq/index.html",
+    "page": "src/content/en/faq/page.tsx",
+    "locale": "en",
+    "title": "FAQ · Happy Global Service"
+  },
+  {
+    "route": "/en/",
+    "source": "en/index.html",
+    "page": "src/content/en/page.tsx",
+    "locale": "en",
+    "title": "Happy Global Service · U.S. Market Entry and Local Operations · Dallas, Texas"
+  },
+  {
+    "route": "/en/services/channel/",
+    "source": "en/services/channel/index.html",
+    "page": "src/content/en/services/channel/page.tsx",
+    "locale": "en",
+    "title": "Retail & Channel Entry · Happy Global Service"
+  },
+  {
+    "route": "/en/services/content/",
+    "source": "en/services/content/index.html",
+    "page": "src/content/en/services/content/page.tsx",
+    "locale": "en",
+    "title": "Content & Localized Marketing · Happy Global Service"
+  },
+  {
+    "route": "/en/services/finance-compliance/",
+    "source": "en/services/finance-compliance/index.html",
+    "page": "src/content/en/services/finance-compliance/page.tsx",
+    "locale": "en",
+    "title": "Tax & Listing-Structure Planning · Happy Global Service"
+  },
+  {
+    "route": "/en/services/hr-ops/",
+    "source": "en/services/hr-ops/index.html",
+    "page": "src/content/en/services/hr-ops/page.tsx",
+    "locale": "en",
+    "title": "HR Operations & Employment Compliance · Happy Global Service"
+  },
+  {
+    "route": "/en/services/",
+    "source": "en/services/index.html",
+    "page": "src/content/en/services/page.tsx",
+    "locale": "en",
+    "title": "Services · Happy Global Service"
+  },
+  {
+    "route": "/en/services/recruiting/",
+    "source": "en/services/recruiting/index.html",
+    "page": "src/content/en/services/recruiting/page.tsx",
+    "locale": "en",
+    "title": "Recruiting & Executive Search · Happy Global Service"
+  },
+  {
+    "route": "/en/services/warehousing/",
+    "source": "en/services/warehousing/index.html",
+    "page": "src/content/en/services/warehousing/page.tsx",
+    "locale": "en",
+    "title": "Cross-Border Logistics & Fulfillment · Happy Global Service"
+  },
+  {
+    "route": "/faq/",
+    "source": "faq/index.html",
+    "page": "src/content/zh/faq/page.tsx",
+    "locale": "zh",
+    "title": "常见问题 · Happy Global Service"
+  },
+  {
+    "route": "/",
+    "source": "index.html",
+    "page": "src/content/zh/page.tsx",
+    "locale": "zh",
+    "title": "Happy Global Service · 美国市场进入与本地经营服务 · 达拉斯"
+  },
+  {
+    "route": "/services/channel/",
+    "source": "services/channel/index.html",
+    "page": "src/content/zh/services/channel/page.tsx",
+    "locale": "zh",
+    "title": "销售渠道服务 · Happy Global Service"
+  },
+  {
+    "route": "/services/content/",
+    "source": "services/content/index.html",
+    "page": "src/content/zh/services/content/page.tsx",
+    "locale": "zh",
+    "title": "内容与本地化营销 · Happy Global Service"
+  },
+  {
+    "route": "/services/finance-compliance/",
+    "source": "services/finance-compliance/index.html",
+    "page": "src/content/zh/services/finance-compliance/page.tsx",
+    "locale": "zh",
+    "title": "财税与上市架构规划 · Happy Global Service"
+  },
+  {
+    "route": "/services/hr-ops/",
+    "source": "services/hr-ops/index.html",
+    "page": "src/content/zh/services/hr-ops/page.tsx",
+    "locale": "zh",
+    "title": "人力资源运营与合规用工 · Happy Global Service"
+  },
+  {
+    "route": "/services/",
+    "source": "services/index.html",
+    "page": "src/content/zh/services/page.tsx",
+    "locale": "zh",
+    "title": "服务 · Happy Global Service"
+  },
+  {
+    "route": "/services/recruiting/",
+    "source": "services/recruiting/index.html",
+    "page": "src/content/zh/services/recruiting/page.tsx",
+    "locale": "zh",
+    "title": "招聘与猎头 · Happy Global Service"
+  },
+  {
+    "route": "/services/warehousing/",
+    "source": "services/warehousing/index.html",
+    "page": "src/content/zh/services/warehousing/page.tsx",
+    "locale": "zh",
+    "title": "跨境物流与仓储履约 · Happy Global Service"
+  }
+]
