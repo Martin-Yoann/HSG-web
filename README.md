@@ -77,6 +77,6 @@ npm run dev
 
 ## 联系方式范围（2026-10-27）
 
-本版中英文联系页仅保留 service@happyglobalinc.com 邮箱入口，不展示在线咨询表单及“暂未开放”提示，也不部署 /api/contact/ 收集接口。点击邮件链接由访客自己的邮件客户端发送，Zoho 负责邮箱收件。
+本版中英文联系页仅保留 service@happyglobalinc.com 邮箱入口，不展示在线咨询表单及“暂未开放”提示，也不部署 /api/contact/ 收集接口。联系页主按钮在新标签页打开 Gmail 网页写信，并预填 service@happyglobalinc.com 为收件人；访客使用自己的 Google 账号编辑并发送，无需网站邮件参数。侧边邮箱地址保留 mailto 入口供其他邮件客户端使用，Zoho 继续负责收件。
 
 今后新增表单，须先由 Rubie 确认收集字段、用途、数据去向、可访问人员及相应隐私政策，再实施和启用；不能通过补充环境变量直接开启。

@@ -38,7 +38,7 @@ export default function Page() {
 <div className="kicker">{"Contact"}</div>
 <h1 className="title">{"We look forward to hearing from you"}</h1>
 <p className="lead">{"Email us at service@happyglobalinc.com. Please tell us briefly about your products, target market and current stage, and the lead for the relevant service line will be in touch."}</p>
-<p className="contact__mail"><a className="btn" href="mailto:service@happyglobalinc.com">{"Send an email · service@happyglobalinc.com"}</a></p><p className="contact__privacy">{"How we handle the information you send us is explained in our "}<Link href="/en/privacy/">{"Privacy Policy"}</Link>{"."}</p>
+<p className="contact__mail"><a className="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=service%40happyglobalinc.com" target="_blank" rel="noopener noreferrer" title="Compose in Gmail in a new tab">{"Send an email · service@happyglobalinc.com"}</a></p><p className="contact__privacy">{"How we handle the information you send us is explained in our "}<Link href="/en/privacy/">{"Privacy Policy"}</Link>{"."}</p>
 </div>
 <div className="contact__side">
 <div className="card"><h3>{"Email"}</h3><p><a href="mailto:service@happyglobalinc.com">{"service@happyglobalinc.com"}</a></p></div>
