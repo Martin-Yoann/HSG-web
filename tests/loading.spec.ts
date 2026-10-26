@@ -11,12 +11,12 @@ test('hero is responsive and preloaded; distant photos load on scroll', async ({
   await expect(page.locator('link[rel=preload][as=image]')).toHaveCount(1);
   await expect.poll(() => hero.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
   expect(await hero.evaluate((img: HTMLImageElement) => new URL(img.currentSrc).pathname)).toMatch(/^\/_next\/image\/?$/);
-  expect(requests.some(url => url.includes('community-donation-car'))).toBe(false);
-  const distant = page.locator('img[src*="community-donation-car"]');
+  expect(requests.some(url => url.includes('us-chamber-shay'))).toBe(false);
+  const distant = page.locator('img[src*="us-chamber-shay"]');
   await expect(distant).toHaveAttribute('loading', 'lazy');
   await distant.scrollIntoViewIfNeeded();
   await expect.poll(() => distant.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
-  expect(requests.some(url => url.includes('community-donation-car'))).toBe(true);
+  expect(requests.some(url => url.includes('us-chamber-shay'))).toBe(true);
 });
 
 test('constrained networks skip speculative routes and video, while clicks still navigate', async ({ page }) => {

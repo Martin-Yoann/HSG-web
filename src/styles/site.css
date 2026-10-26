@@ -224,7 +224,7 @@ body.no-hero main{padding-top:72px}
 .timeline p{color:var(--muted);font-size:14.5px;margin-top:6px}
 
 /* ---------- 市场一线（带标签照片） ---------- */
-.field{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(4,250px);gap:12px;margin-top:40px}
+.field{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(var(--rows,4),250px);gap:12px;margin-top:40px}
 .tile{position:relative;margin:0;border-radius:var(--radius);overflow:hidden}
 .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
 .tile:hover img{transform:scale(1.03)}
@@ -278,6 +278,18 @@ body.no-hero main{padding-top:72px}
 .chips input{accent-color:var(--green)}
 .form__msg{font-size:14px;color:var(--green-ink)}
 .contact__side{display:grid;gap:14px}
+.contact-invite{display:flex;align-items:center;justify-content:space-between;gap:32px}
+.contact-invite>div{max-width:760px}
+.contact-invite>.btn{flex-shrink:0}
+.contact-invite .lead{margin-top:16px}
+.contact>div{min-width:0}
+.contact-email .kicker{margin-bottom:12px}
+.contact-email__address{display:inline-block;max-width:100%;margin:16px 0 8px;font-size:clamp(18px,2vw,24px);font-weight:700;overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:4px}
+.contact-email .btn{margin-top:24px}
+.contact-email .contact-email__hint{font-size:13px;margin-top:12px}
+@media(max-width:760px){
+  .contact-invite{flex-direction:column;align-items:stretch}
+}
 .card{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
 .card h3{font-size:17px}
 .card p{color:var(--muted);font-size:14.5px;margin-top:6px}
@@ -681,11 +693,12 @@ html[lang=en] .stat__label--split .pt{display:block}
   .service-hero .wrap{padding-top:108px;padding-bottom:32px;grid-template-rows:22px 22px 112px auto;gap:8px}
   .service-hero h1{font-size:32px;line-height:1.16}
   .service-hero p{font-size:16px;line-height:1.7}
-  html[lang=en] .service-hero{--service-banner-height:680px}
+  html[lang=en] .service-hero{--service-banner-height:720px}
 }
 @media (max-width:370px){
+  .service-hero{--service-banner-height:620px}
   .service-hero h1{font-size:28px}
-  html[lang=en] .service-hero{--service-banner-height:740px}
+  html[lang=en] .service-hero{--service-banner-height:840px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -756,3 +769,38 @@ main[data-navigation=language] .hero__poster,
 main[data-navigation=language] .tabs,
 main[data-navigation=language] .svc__main,
 main[data-navigation=language] .aside{animation:none!important}
+
+/* Release v2.27 layouts */
+/* v2.17 联系页（不开表单时）与隐私政策、使用条款页 */
+.contact__mail{margin-top:26px}
+.contact__mail .btn{white-space:normal;text-align:center}
+.contact__privacy{margin-top:14px;color:var(--muted);font-size:14.5px}
+.legal{max-width:880px;font-size:15.5px;line-height:1.85;color:var(--ink)}
+.legal h2{font-size:22px;margin:44px 0 12px;color:var(--navy)}
+.legal h3{font-size:17px;margin:26px 0 8px;color:var(--navy)}
+.legal p{margin:10px 0}
+.legal .legal__date{color:var(--muted);font-size:14.5px;margin-top:0}
+.legal a{color:var(--green-ink);text-decoration:underline;text-underline-offset:2px;word-break:break-word}
+.legal__list{margin:12px 0;padding-left:1.2em}
+.legal__list li{margin:8px 0}
+.legal__table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px;background:#fff;border-radius:var(--radius-sm);overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.legal__table th,.legal__table td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.legal__table tbody th{width:30%;color:var(--navy);font-weight:700}
+.legal__table thead th{background:var(--bg-soft);color:var(--navy)}
+.legal__table--wide{display:block;overflow-x:auto}
+.legal__table--wide tbody th{width:auto}
+mark.todo{background:#FFE58A;color:var(--ink);padding:0 4px;border-radius:4px}
+@media (max-width:640px){.legal{font-size:15px}.legal h2{font-size:19px;margin-top:34px}.legal__table th,.legal__table td{padding:8px 10px}.legal__table tbody th{width:36%}}
+
+/* v2.17：离职同事照片撤下后，美国团队 3 张、团建 6 张的排法 */
+.mosaic--w3>:nth-child(2),.mosaic--w3>:nth-child(3){grid-column:3/5}
+.mosaic--c6>:nth-child(4){grid-column:span 2}
+@media (max-width:900px){
+  .mosaic--w3>:nth-child(2),.mosaic--w3>:nth-child(3){grid-column:auto}
+  .mosaic--c6>:nth-child(4){grid-column:1/-1}
+}
+
+/* Allow long legal-page titles to wrap between their phrases. */
+.legal-hero h1 .nw{display:inline-block;max-inline-size:100%;white-space:normal}
+.legal__table:not(.legal__table--wide){table-layout:fixed}
+.legal__table th,.legal__table td{overflow-wrap:anywhere}

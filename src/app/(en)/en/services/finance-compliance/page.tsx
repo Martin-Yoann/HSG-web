@@ -1,1 +1,1 @@
-export { default, metadata } from "@/content/en/services/finance-compliance/page";
+export { default, metadata } from '@/content/en/services/finance-compliance/page';

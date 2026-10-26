@@ -4,7 +4,7 @@ import path from 'node:path';
 import ts from 'typescript';
 
 const routes = JSON.parse(fs.readFileSync('src/data/routes.json', 'utf8'));
-assert.equal(routes.length, 24, 'All 24 original routes must exist');
+assert.equal(routes.length, 28, 'All 28 original routes must exist');
 const knownRoutes = new Set(routes.map(page => page.route));
 const failures = [];
 let references = 0;
@@ -29,7 +29,7 @@ function inspect(file) {
 }
 for (const page of routes) {
   assert(fs.existsSync(page.page), `Missing page ${page.page}`);
-  const relative = page.source.replace('index.html', 'page.tsx');
+  const relative = page.route.slice(1) + 'page.tsx';
   const routeFile = path.join(`src/app/(${page.locale})`, relative);
   assert(fs.existsSync(routeFile), `Missing route ${routeFile}`);
   assert(fs.existsSync(path.join('legacy', page.source)), `Missing original ${page.source}`);
@@ -39,4 +39,4 @@ for (const page of routes) {
 }
 for (const item of fs.readdirSync('src/components')) if (item.endsWith('.tsx')) inspect(path.join('src/components', item));
 assert.deepEqual(failures, [], failures.join('\n'));
-console.log(`Passed: 24 pages, 24 language counterparts, original source backups, and ${references} local references.`);
+console.log(`Passed: 28 pages, 28 language counterparts, original source backups, and ${references} local references.`);

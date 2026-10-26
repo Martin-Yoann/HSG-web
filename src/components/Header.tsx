@@ -3,30 +3,7 @@ import { NavLink, LanguageSwitch } from './Navigation';
 import type { Locale } from '@/lib/locale';
 
 const slugs = ['channel', 'content', 'recruiting', 'finance-compliance', 'warehousing', 'hr-ops'];
-const labels = {
-  zh: {
-    home: '首页', services: '服务', network: 'Happy Global 体系', about: '关于我们', contact: '联系我们', nav: '主导航', menu: '菜单',
-    items: [
-      ['渠道', '销售渠道服务', '协助品牌进入美国线下与线上销售渠道'],
-      ['营销', '内容与本地化营销', '面向美国市场的品牌内容制作与社交媒体运营'],
-      ['招聘', '招聘与猎头', '高管寻访、专业人才招聘与人才咨询'],
-      ['财税', '财税与架构', '财税规划、股权与上市架构规划，以及合规事务统筹'],
-      ['物流', '物流与仓储', '跨境头程、美国多仓履约与 B2B 配送'],
-      ['用工', '人力资源与用工', 'EOR／PEO、薪酬、入离职合规与人员赴美'],
-    ],
-  },
-  en: {
-    home: 'Home', services: 'Services', network: 'Our Network', about: 'About', contact: 'Contact us', nav: 'Main navigation', menu: 'Menu',
-    items: [
-      ['R', 'Retail & Channel Entry', 'Entry into U.S. offline and online sales channels'],
-      ['C', 'Content & Localized Marketing', 'Brand content and social media for the U.S. market'],
-      ['H', 'Recruiting & Search', 'Executive search, professional recruiting and talent advisory'],
-      ['F', 'Tax & Structure', 'Tax planning, equity and listing-structure planning, and compliance'],
-      ['W', 'Logistics & Warehousing', 'Cross-border freight, multi-warehouse U.S. fulfillment and B2B delivery'],
-      ['HR', 'HR & Employment', 'EOR/PEO, payroll, compliance and relocation to the U.S.'],
-    ],
-  },
-};
+import labels from '@/data/navigation.json';
 
 export function Header({ locale }: { locale: Locale }) {
   const copy = labels[locale];

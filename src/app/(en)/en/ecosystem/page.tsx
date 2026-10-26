@@ -1,1 +1,1 @@
-export { default, metadata } from "@/content/en/ecosystem/page";
+export { default, metadata } from '@/content/en/ecosystem/page';

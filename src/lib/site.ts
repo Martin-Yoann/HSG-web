@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 
-const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL
-  || (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');
+const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://happyglobalinc.com';
 export const siteMetadata: Metadata = {
   metadataBase: new URL(configuredUrl),
   icons: { icon: '/assets/img/favicon.svg' },

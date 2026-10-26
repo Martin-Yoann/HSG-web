@@ -15,7 +15,7 @@ function originalText(file: string) {
   return texts;
 }
 
-test('all 24 routes preserve original content, metadata and language', async ({ page }) => {
+test('all 28 routes preserve v2.27 content, metadata and language', async ({ page }) => {
   const failures: string[] = [];
   page.on('pageerror', error => failures.push(error.message));
   page.on('response', response => { if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`); });
@@ -32,14 +32,13 @@ test('all 24 routes preserve original content, metadata and language', async ({ 
       const texts: string[] = [];
       let node;
       while ((node = walker.nextNode())) {
-        if (node.parentElement?.closest('.video-placeholder')) continue;
         const value = node.textContent?.replace(/\s+/g, ' ').trim();
         if (value) texts.push(value);
       }
       return texts;
     });
     expect(actual, route.route).toEqual(originalText(route.source));
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `http://localhost:3000${route.route}`);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://happyglobalinc.com${route.route}`);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth), `Horizontal overflow: ${route.route}`).toBe(true);
   }
   expect(failures).toEqual([]);
@@ -47,7 +46,7 @@ test('all 24 routes preserve original content, metadata and language', async ({ 
 
 test('old index.html routes redirect permanently to the matching page', async ({ request }) => {
   for (const route of routes) {
-    const old = '/' + route.source;
+    const old = route.route + 'index.html';
     const response = await request.get(old, { maxRedirects: 0 });
     expect(response.status(), old).toBe(308);
     expect(new URL(response.headers().location, 'http://127.0.0.1:3100').pathname, old).toBe(route.route);
@@ -72,12 +71,8 @@ test('client navigation resets interactions and language switch preserves the pa
   await expect(page).toHaveURL(/\/about\/$/);
   await page.locator('header').getByRole('link', { name: '联系我们', exact: true }).click();
   await expect(page).toHaveURL(/\/contact\/$/);
-  const form = page.locator('main form');
-  await form.locator('[name="name"]').fill('迁移验证');
-  await form.locator('[name="reach"]').fill('test@example.com');
-  await form.getByRole('button', { name: '提交', exact: true }).click();
-  await expect(form.locator('[role="status"]')).toContainText('在线表单');
-  await expect(form.locator('[name="name"]')).toHaveValue('迁移验证');
+  await expect(page.locator('main a[href="mailto:service@happyglobalinc.com"]').first()).toBeVisible();
+  await expect(page.locator('main form')).toHaveCount(0);
   await page.goBack();
   await expect(page).toHaveURL(/\/about\/$/);
   expect(errors).toEqual([]);

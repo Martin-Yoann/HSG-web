@@ -1,91 +1,76 @@
 # HSG-web · Happy Global Service 官网
 
-原静态中英双语官网已迁移为 Next.js App Router + React + TypeScript。24 个页面使用独立的 `page.tsx`，在构建时生成静态内容；客户端导航、菜单、滚动动画与首屏视频已适配。
+当前内容版本：**v2.27 / 2026-10-26**。正式网址：**https://happyglobalinc.com**。
 
-## 主要功能
+本项目将已确认的 v2.27 静态上线包接入 Next.js App Router、React 19 和 TypeScript，包含中文 14 页、英文 14 页，共 28 个业务页面，在构建时静态预渲染。
 
-- 中文与英文共 24 个页面，包含首页、服务、体系、关于我们、常见问题与联系页面。
-- Next.js App Router、React 19 与 TypeScript；业务页面在构建时静态预渲染。
-- 中英文无刷新切换，保留滚动位置、查询参数和锚点，滑块反馈同步更新。
-- 响应式导航与移动端折叠页脚，支持键盘操作和减少动态效果偏好。
-- 响应式 WebP 图片、首屏预加载、下方图片懒加载，以及网络条件感知的路由预取和视频加载。
-- 各页 canonical、hreflang、Open Graph 元数据与结构化数据。
+## 本版内容
 
-## 本地开发
+- 同步最新版首页、六类服务、体系、关于、常见问题与联系页面的文字和图片。
+- 增加中英文隐私政策及使用条款，最后更新日期为 2026 年 10 月 26 日。
+- 联系方式统一为 `service@happyglobalinc.com`；无在线表单、微信二维码或邮件发送接口。
+- 首页背景视频、Open Platform Conference 和 Why Dallas 三段视频均已提供。
+- `robots.txt` 允许抓取；`sitemap.xml` 包含 28 个正式网址。canonical、hreflang、x-default 及分享地址指向正式主域。
+- 保留无刷新语言切换、滑块动画、移动菜单、折叠页脚、服务页统一横幅及减少动态效果支持。
 
-需要 Node.js 20.9 或以上，建议使用当前 Node.js LTS。
+## 本地运行
+
+需要 Node.js 20.9 或更高版本；当前 Vercel 项目使用 Node.js 24.x。
 
 ```sh
 npm ci
 npm run dev
 ```
 
-访问 `http://localhost:3000`。英文站为 `/en/`。
-
-### 常用命令
+中文入口为 `http://localhost:3000/`，英文为 `/en/`。Windows 开发脚本包含目录监听兼容处理。
 
 | 命令 | 用途 |
 | --- | --- |
-| `npm run dev` | 启动开发服务器，支持热更新 |
-| `npm run check` | 检查 24 个页面、双语映射与本地资源引用 |
-| `npm run typecheck` | 检查 TypeScript 类型 |
-| `npm run build` | 生成生产构建到 `.next/` |
-| `npm start` | 启动已构建的生产版本 |
-| `npm run test:e2e` | 运行 Playwright 浏览器回归测试 |
+| `npm run check` | 验证 28 个路由、语言对应及本地资源 |
+| `npm run typecheck` | TypeScript 类型检查 |
+| `npm run build` | 生产构建，生成 `.next/` |
+| `npm start` | 启动生产版本 |
+| `npm run test:e2e` | Playwright 浏览器回归，运行前先构建 |
 
-生产预览前先完成检查和构建：
+测试在 Windows 优先使用系统 Edge；其他环境可用 `npx playwright install chromium` 安装浏览器，或通过 `PLAYWRIGHT_EXECUTABLE_PATH` 指定 Chromium 路径。
 
-```sh
-npm run check
-npm run typecheck
-npm run build
-npm start
-```
+## 项目结构与内容维护
 
-浏览器回归测试（先执行 `npm run build`）：
+- `src/app/`：共享根布局及中英文路由。
+- `src/content/zh/`、`src/content/en/`：页面正文和元数据。
+- `src/components/`：导航、语言切换、折叠页脚、图片等公共组件。
+- `src/data/routes.json`、`src/data/navigation.json`：路由清单及双语导航文字。
+- `src/styles/site.css`：网站样式与响应式交互。
+- `public/assets/`：图片与三个视频；`public/robots.txt`、`public/sitemap.xml` 为抓取入口。
+- `legacy/v2.27/`：本版批准的 HTML 原稿，供逐页内容核对；`legacy/` 其他文件为初次迁移的历史备份。
+- `scripts/import-v227.mjs`：从指定静态包导入页面及页脚；运行会覆盖正文，不用于日常增量编辑。
+- `tests/`：内容、SEO、视频、加载策略、双语切换及布局回归。
+- [原版部署说明](docs/Deploy-Notes-v2.27.md)：随本次源码提供的上线说明。
 
-```sh
-npm run test:e2e
-```
-
-Windows 默认使用系统 Microsoft Edge；其他环境可执行 `npx playwright install chromium` 安装测试浏览器，或通过 `PLAYWRIGHT_EXECUTABLE_PATH` 指定已有 Chromium 浏览器。
-
-## 项目结构
-
-- `src/app/layout.tsx`：中英文共享根布局，配合 `SiteDocument` 保留服务端正确的 HTML 语言属性及静态生成。
-- `src/app/(zh)/`、`src/app/(en)/en/`：中文、英文静态路由，引用对应正文。
-- `src/content/zh/`、`src/content/en/`：24 个独立的中文、英文页面正文和元数据。
-- `src/components/`：共享页面框架和页头、双语页脚、语言导航、路由交互、结构化数据、视频占位组件。
-- `src/styles/site.css`：沿用原有样式。
-- `public/assets/`：原有图片、视频等静态资源。
-- `src/data/routes.json`：24 个新旧页面映射。
-- `legacy/`：原始 HTML 与 robots.txt，仅作核对备份，不作为网站内容发布。
-- `scripts/migrate-html.mjs`、`scripts/finalize-migration.mjs`：此次迁移使用的一次性脚本，日常开发无需重新执行。
-
-修改正文请直接编辑 `src/content/` 下对应 `page.tsx`，公共区域编辑组件。站内链接采用 `/about/` 等路径，旧的 `/about/index.html` 会永久重定向到新地址。中文公开网址保持不变，英文公开网址保留 `/en/`。语言切换使用客户端导航、预取对应页面并保留滚动位置、查询参数和锚点，不重新加载文档，也不重播页面入场动画。按钮采用同一枚滑动选中背景。
+日常改文案直接编辑 `src/content/`。不要运行初次迁移脚本重新覆盖项目。旧 `index.html` 地址会永久跳转到对应目录地址。
 
 ## 加载策略
 
-- 正文图片使用 `SiteImage`：服务端生成 Next.js 响应式图片地址，浏览器按尺寸选择 WebP；保留宽高占位，避免布局跳动。每页仅首屏图使用 `loading="eager"`，自动添加匹配 `srcset` 的高优先级预加载，其余默认懒加载。特殊布局可传入 `sizes`。
-- 站内链接使用 `IntentLink`，在悬停、键盘聚焦或触摸时预取，避免长页面的所有链接自动下载。对应语言页面在页面加载完成后的空闲时间预取；省流量和 3G/2G 网络跳过这些可选请求。
-- 首页视频在桌面、非弱网、未开启减少动态效果时，等待页面加载及封面解码完成后才加载；离开视口或切到后台暂停。手机保留响应式封面，不下载视频。字体继续使用系统字体，无额外字体请求。
-- 图片转换结果缓存 4 小时；替换同名图片可能仍命中缓存，更新图片时推荐使用新文件名。图片优化需要 Next.js 服务或 Vercel，不能直接将构建结果当作纯静态文件目录托管。
-- `tests/loading.spec.ts` 验证首屏预加载、下方图片懒加载、弱网策略及视频请求顺序。
+`SiteImage` 在服务端生成响应式 WebP 地址，首屏图片预加载，其余图片懒加载并保留尺寸占位。`IntentLink` 在悬停、聚焦或触摸时预取，对应语言页面在页面加载完成后的空闲时间预取；弱网及省流量模式跳过可选预取。
 
-## Vercel 部署
+首页背景视频仅在合适的桌面网络条件下、页面及封面就绪后加载，离开视口或切到后台暂停；移动端保留封面。两段正文视频采用 `preload="none"`，由访客手动播放。字体使用系统字体。本站未加入统计脚本或业务 Cookie。
 
-在 Vercel 导入 [Martin-Yoann/HSG-web](https://github.com/Martin-Yoann/HSG-web) 仓库，Framework Preset 选择 **Next.js**。构建命令为 `npm run build`，输出目录保持框架默认值。无需自定义 `vercel.json`。
+图片转换结果缓存至少 4 小时。替换图片建议使用新文件名，避免命中旧缓存。图片优化需要 Next.js 服务或 Vercel，不能将 `.next/` 当纯静态目录托管。
 
-在 Vercel 环境变量中设置 `NEXT_PUBLIC_SITE_URL` 为正式站点来源地址，例如 `https://your-domain.com`，然后重新构建。此地址用于 canonical、hreflang 和 Open Graph 的绝对 URL。未配置时使用 Vercel 的生产域名（若可用），本地开发回退到 `http://localhost:3000`。
+## Vercel 与正式域名
 
-## 待提供的正式上线资料
+仓库：[Martin-Yoann/HSG-web](https://github.com/Martin-Yoann/HSG-web)，分支 `master`；Vercel 项目 `hsg-web`。框架选 Next.js，构建命令 `npm run build`，输出目录保留默认。
 
-1. `public/robots.txt` 保留原始 `Disallow: /`，防止迁移预览被抓取。正式开放收录时将其改为 `Allow: /`；正式域名确认后可添加 sitemap。
-2. 联系表单尚无接收接口、正式邮箱或微信二维码，保留原有待启用提示，提交不会发送邮件。绑定域名不会自动接通表单。
-3. 原始项目缺少 `opc.mp4` 和 `why-dallas.mp4`。受影响的 8 处视频展示保留现有海报，显示“视频即将上线”，避免发出 404 请求。收到视频文件后放入 `public/assets/video/`，将对应 `VideoPlaceholder` 替换回带 `controls` 的 `video` 即可。首页已有的 `hero-loop.mp4` 继续使用。
+环境变量 `NEXT_PUBLIC_SITE_URL=https://happyglobalinc.com`。页面 canonical 等已按上线包写入正式地址；预览部署应保留托管平台提供的禁止索引响应头。`.env.example` 不含凭证，本站无需 SMTP 配置。
+
+主域采用不带 www 的 `happyglobalinc.com`；www 在 Vercel 项目域名设置中永久跳转到主域。不要同时配置相反方向的跳转。
+
+`/contact/` 和 `/en/contact/` 都展示新官网的邮件联系页。历史商城 `/pages/`、`/blogs/`、`/collections/`、`/products/`、`/policies/` 等地址继续按 `next.config.ts` 跳转到 `www.happyglobalus.com`，保留查询参数。商城数据及账户由原商城平台维护，本仓库不包含商城迁移。
+
+## 上线核对
+
+确认 28 个页面、三段视频、邮件链接、隐私及条款、robots 和 sitemap 可访问，且 www 跳转无循环。Search Console / Bing Webmaster 的域名验证及 sitemap 提交由站点管理员在对应账号中完成；代码发布不代表已完成搜索引擎提交。
 
 ## 版本管理
 
-提交源码、`package-lock.json` 和 `public/` 静态资源。依赖目录 `node_modules/`、构建目录 `.next/`、测试产物及实际 `.env` 配置由 `.gitignore` 排除；`.env.example` 仅提供配置示例。
-
-从 GitHub 获取项目后执行 `npm ci` 和 `npm run build` 即可重新生成构建产物。请勿直接在生产环境使用 `npm run dev`。
+提交源码、锁文件、媒体及测试；`node_modules/`、`.next/`、`.vercel/`、测试产物和实际 `.env` 文件均忽略。从仓库获取项目后执行 `npm ci` 和 `npm run build` 重建，不上传本地构建目录。
