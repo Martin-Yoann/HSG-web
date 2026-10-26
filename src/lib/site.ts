@@ -6,4 +6,4 @@ export const siteMetadata: Metadata = {
   icons: { icon: '/assets/img/favicon.svg' },
 };
 
-export const viewport: Viewport = { themeColor: '#011D64' };
+export const viewport: Viewport = { themeColor: '#011D64', viewportFit: 'cover' };

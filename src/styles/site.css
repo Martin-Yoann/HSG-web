@@ -814,3 +814,33 @@ mark.todo{background:#FFE58A;color:var(--ink);padding:0 4px;border-radius:4px}
 .legal-hero h1 .nw{display:inline-block;max-inline-size:100%;white-space:normal}
 .legal__table:not(.legal__table--wide){table-layout:fixed}
 .legal__table th,.legal__table td{overflow-wrap:anywhere}
+
+/* Keep controls reachable on phones, landscape screens and notched displays. */
+html{scroll-padding-top:88px}
+.wrap{padding-left:max(var(--gutter),env(safe-area-inset-left));padding-right:max(var(--gutter),env(safe-area-inset-right))}
+.footer .wrap{padding-bottom:max(40px,env(safe-area-inset-bottom))}
+@media(max-width:1180px){
+  .topbar .wrap{padding-top:env(safe-area-inset-top)}
+  .topbar .menu-btn{width:44px;height:44px;flex:0 0 44px;touch-action:manipulation}
+  .topbar .langswitch{flex-shrink:0;min-height:52px}
+  .topbar .langswitch a{min-height:44px;touch-action:manipulation}
+  .topbar .logo{min-width:0;flex-shrink:1}
+  .topbar .logo__svg{max-width:100%}
+  .topbar.is-open .nav,html[lang=en] .topbar.is-open .nav{
+    top:100%;max-height:calc(100vh - 72px - env(safe-area-inset-top));
+    max-height:calc(100dvh - 72px - env(safe-area-inset-top));
+    overflow-y:auto;overscroll-behavior-y:contain;
+    padding-bottom:max(24px,env(safe-area-inset-bottom));
+    padding-left:max(var(--gutter),env(safe-area-inset-left));
+    padding-right:max(var(--gutter),env(safe-area-inset-right));
+  }
+  .contact-form input,.contact-form textarea{font-size:16px;scroll-margin-block:100px}
+}
+@media(max-width:760px){
+  .footer .wrap{padding-bottom:max(24px,env(safe-area-inset-bottom))}
+  .title--statement .nw{white-space:normal;overflow-wrap:anywhere}
+  .tabs a{display:inline-flex;align-items:center;min-height:44px}
+  .contact__side a,.contact__mail a{overflow-wrap:anywhere}
+  .contact-form .btn{min-height:48px}
+  .contact-form .contact-form__consent{min-height:44px;padding-block:8px}
+}
