@@ -1,3 +1,4 @@
+import { ContactForm } from '@/components/ContactForm';
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import Link from '@/components/IntentLink';
@@ -39,6 +40,7 @@ export default function Page() {
 <h1 className="title">{"期待与贵司沟通"}</h1>
 <p className="lead">{"如有合作意向，欢迎发邮件至 service@happyglobalinc.com。请简要说明贵司的产品、目标市场与当前阶段，我们将安排相应板块的负责人与您对接。"}</p>
 <p className="contact__mail"><a className="btn" href="mailto:service@happyglobalinc.com">{"发送邮件 · service@happyglobalinc.com"}</a></p><p className="contact__privacy">{"我们如何处理您通过邮件提供的信息，请见"}<Link href="/privacy/">{"隐私政策"}</Link>{"。"}</p>
+<ContactForm locale="zh" />
 </div>
 <div className="contact__side">
 <div className="card"><h3>{"邮箱"}</h3><p><a href="mailto:service@happyglobalinc.com">{"service@happyglobalinc.com"}</a></p></div>

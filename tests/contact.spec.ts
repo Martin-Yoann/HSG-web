@@ -9,8 +9,8 @@ for (const prefix of ['', '/en']) {
     await expect(page.locator('main h1')).toBeVisible();
     await expect(page.locator('header > .wrap > a.btn')).toHaveAttribute('aria-current', 'page');
     await expect(page.locator('main a[href="mailto:service@happyglobalinc.com"]').first()).toHaveAttribute('href', 'mailto:service@happyglobalinc.com');
-    await expect(page.locator('main form')).toHaveCount(0);
-    await expect(page.locator('main a[href$="/privacy/"]')).toBeVisible();
+    await expect(page.locator('main form')).toHaveCount(1);
+    await expect(page.locator('.contact__privacy a[href$="/privacy/"]')).toBeVisible();
     await page.reload();
     await expect(page.locator('main h1')).toBeVisible();
     await page.locator('.langswitch a').filter({ hasText: prefix ? '中文' : 'English' }).click();

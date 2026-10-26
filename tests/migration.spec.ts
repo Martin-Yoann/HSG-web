@@ -33,7 +33,7 @@ test('all 28 routes preserve v2.27 content, metadata and language', async ({ pag
       let node;
       while ((node = walker.nextNode())) {
         const value = node.textContent?.replace(/\s+/g, ' ').trim();
-        if (value) texts.push(value);
+        if (value && !node.parentElement?.closest('.contact-form')) texts.push(value);
       }
       return texts;
     });
@@ -72,7 +72,7 @@ test('client navigation resets interactions and language switch preserves the pa
   await page.locator('header').getByRole('link', { name: '联系我们', exact: true }).click();
   await expect(page).toHaveURL(/\/contact\/$/);
   await expect(page.locator('main a[href="mailto:service@happyglobalinc.com"]').first()).toBeVisible();
-  await expect(page.locator('main form')).toHaveCount(0);
+  await expect(page.locator('main form')).toHaveCount(1);
   await page.goBack();
   await expect(page).toHaveURL(/\/about\/$/);
   expect(errors).toEqual([]);

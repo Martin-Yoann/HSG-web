@@ -1,3 +1,4 @@
+import { DeferredVideo } from '@/components/DeferredVideo';
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import Link from '@/components/IntentLink';
@@ -73,7 +74,7 @@ export default function Page() {
 <div className="head-split"><div><div className="kicker">{"Corporate film"}</div><h2 className="title rv">{"Why we chose Dallas"}</h2></div><p className="lead">{"A colleague from our U.S. marketing team on the economy, talent and logistics of Dallas, and why we made it our headquarters."}</p></div>
 <div className="videos">
 <figure className="vcard rv" style={{"--i":"0"} as CSSProperties}>
-<video controls playsInline preload="none" poster="/assets/img/poster-dallas.jpg"><source src="/assets/video/why-dallas.mp4" type="video/mp4" /></video>
+<DeferredVideo poster="/assets/img/poster-dallas.jpg" src="/assets/video/why-dallas.mp4" />
 <figcaption><small>{"Why Dallas"}</small><b>{"Why we chose Dallas"}</b><span>{"A colleague from our U.S. marketing team on the economy, talent and logistics of Dallas, and why we made it our headquarters."}</span></figcaption>
 </figure>
 </div>

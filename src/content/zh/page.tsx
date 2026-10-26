@@ -1,3 +1,4 @@
+import { DeferredVideo } from '@/components/DeferredVideo';
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import Link from '@/components/IntentLink';
@@ -71,11 +72,11 @@ export default function Page() {
 <div className="head-split"><div><div className="kicker">{"企业影像"}</div><h2 className="title rv">{"我们在美国"}</h2></div><p className="lead">{"一段来自我们在达拉斯主办的 Open Platform Conference，一段由美国市场部同事介绍我们选择达拉斯的原因。"}</p></div>
 <div className="videos">
 <figure className="vcard rv" style={{"--i":"0"} as CSSProperties}>
-<video controls playsInline preload="none" poster="/assets/img/poster-opc-short.jpg"><source src="/assets/video/opc.mp4" type="video/mp4" /></video>
+<DeferredVideo poster="/assets/img/poster-opc-short.jpg" src="/assets/video/opc.mp4" />
 <figcaption><small>{"Open Platform Conference · 达拉斯"}</small><b>{"开放平台大会现场"}</b><span>{"我们邀请合作的法律、财税、渠道机构与品牌企业共聚一堂，探讨进入美国市场的实际议题。"}</span></figcaption>
 </figure>
 <figure className="vcard rv" style={{"--i":"1"} as CSSProperties}>
-<video controls playsInline preload="none" poster="/assets/img/poster-dallas.jpg"><source src="/assets/video/why-dallas.mp4" type="video/mp4" /></video>
+<DeferredVideo poster="/assets/img/poster-dallas.jpg" src="/assets/video/why-dallas.mp4" />
 <figcaption><small>{"Why Dallas"}</small><b>{"为什么选择达拉斯"}</b><span>{"美国市场部同事介绍达拉斯的经济、人才与物流条件，以及我们在此设立总部的考量。"}</span></figcaption>
 </figure>
 </div>

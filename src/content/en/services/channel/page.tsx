@@ -1,3 +1,4 @@
+import { DeferredVideo } from '@/components/DeferredVideo';
 import type { Metadata } from 'next';
 import type { CSSProperties } from 'react';
 import Link from '@/components/IntentLink';
@@ -48,7 +49,7 @@ export default function Page() {
 <div className="svc__main">
 <section><h2>{"When it applies"}</h2><ol className="numbered"><li>{"Major U.S. retailers expect suppliers to have an accountable, traceable presence in the country."}</li><li>{"Labels, ingredients and packaging must meet U.S. regulations; adjustments take time."}</li><li>{"Channel margin structures and promotional calendars shape pricing and negotiation."}</li></ol></section>
 <section><h2>{"What we provide"}</h2><ul className="bullets"><li>{"Channel assessment and entry planning"}</li><li>{"Compliance and labeling adjustments (formal review by licensed firms)"}</li><li>{"Introductions to online and retail channels through our own distribution relationships"}</li></ul></section>
-<figure className="video video--inline"><video controls playsInline preload="none" poster="/assets/img/poster-opc-short.jpg"><source src="/assets/video/opc.mp4" type="video/mp4" /></video><figcaption><small>{"Corporate film · Open Platform Conference"}</small><b>{"Channels, compliance and brand companies in one conversation"}</b></figcaption></figure>
+<figure className="video video--inline"><DeferredVideo poster="/assets/img/poster-opc-short.jpg" src="/assets/video/opc.mp4" /><figcaption><small>{"Corporate film · Open Platform Conference"}</small><b>{"Channels, compliance and brand companies in one conversation"}</b></figcaption></figure>
 <section><div className="mosaic mosaic--3" style={{"marginTop":"0"} as CSSProperties}><SiteImage src="/assets/img/field-yfcon-cart.jpg" alt="Sales Channel Entry" width="1400" height="1400" loading="lazy" decoding="async" style={{"objectPosition":"center 50%"} as CSSProperties} /><SiteImage src="/assets/img/base-merch-wall.jpg" alt="Sales Channel Entry" width="1050" height="1400" loading="lazy" decoding="async" /><SiteImage src="/assets/img/eco-glimboo.jpg" alt="Sales Channel Entry" width="1400" height="687" loading="lazy" decoding="async" /></div><p className="note">{"Before channels come consumers. What our own brands learn in the U.S. market informs every channel recommendation."}</p></section>
 </div>
 <aside className="aside">

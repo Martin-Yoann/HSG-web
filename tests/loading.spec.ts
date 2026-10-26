@@ -1,5 +1,19 @@
 import { test, expect } from '@playwright/test';
 
+test('offscreen video posters are deferred without downloading video files', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  const requests: string[] = [];
+  page.on('request', request => requests.push(decodeURIComponent(request.url())));
+  await page.goto('/');
+  await expect(page.locator('video[data-poster]').first()).not.toHaveAttribute('poster');
+  expect(requests.some(url => url.includes('poster-opc-short'))).toBe(false);
+  const video = page.locator('video[data-poster]').first();
+  await video.scrollIntoViewIfNeeded();
+  await expect(video).toHaveAttribute('poster', /\/_next\/image/);
+  await expect.poll(() => requests.some(url => url.includes('poster-opc-short'))).toBe(true);
+  expect(requests.some(url => url.includes('.mp4'))).toBe(false);
+});
+
 test('hero is responsive and preloaded; distant photos load on scroll', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   const requests: string[] = [];

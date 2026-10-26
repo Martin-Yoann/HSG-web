@@ -148,15 +148,21 @@ export function SiteEffects() {
       cleanup.push(() => video.pause());
     }
 
-    document.querySelectorAll<HTMLFormElement>('form[data-form]').forEach(form => {
-      form.addEventListener('submit', event => {
-        if (!form.getAttribute('action') || form.getAttribute('action') === '#') {
-          event.preventDefault();
-          const message = form.querySelector('.form__msg');
-          if (message) message.textContent = form.dataset.pending || '';
-        }
-      }, { signal });
-    });
+    const contentVideos = document.querySelectorAll<HTMLVideoElement>('video[data-poster]');
+    const loadPoster = (target: HTMLVideoElement) => {
+      if (!target.poster && target.dataset.poster) target.poster = target.dataset.poster;
+    };
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          loadPoster(entry.target as HTMLVideoElement);
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '300px' });
+      contentVideos.forEach(target => observer.observe(target));
+      cleanup.push(() => observer.disconnect());
+    } else contentVideos.forEach(loadPoster);
 
     return () => {
       controller.abort();

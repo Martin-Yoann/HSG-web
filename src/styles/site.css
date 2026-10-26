@@ -775,6 +775,16 @@ main[data-navigation=language] .aside{animation:none!important}
 .contact__mail{margin-top:26px}
 .contact__mail .btn{white-space:normal;text-align:center}
 .contact__privacy{margin-top:14px;color:var(--muted);font-size:14.5px}
+.contact-form{position:relative;min-width:0}
+.contact-form input,.contact-form textarea{width:100%;min-width:0}
+.contact-form .contact-form__consent{display:flex;align-items:flex-start;gap:10px;font-weight:400}
+.contact-form__consent input{width:18px;height:18px;flex:0 0 18px;margin-top:3px;accent-color:var(--green)}
+.contact-form__consent a{text-decoration:underline}
+.contact-form__trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.contact-form .btn:disabled{opacity:.6;cursor:wait;transform:none;box-shadow:none}
+.contact-form .form__msg{min-height:1.5em;margin:0}
+.contact-form .form__msg[data-success=false]{color:var(--muted)}
+@media(max-width:480px){.contact-form{padding:20px}.contact-form input,.contact-form textarea{font-size:16px}}
 .legal{max-width:880px;font-size:15.5px;line-height:1.85;color:var(--ink)}
 .legal h2{font-size:22px;margin:44px 0 12px;color:var(--navy)}
 .legal h3{font-size:17px;margin:26px 0 8px;color:var(--navy)}
