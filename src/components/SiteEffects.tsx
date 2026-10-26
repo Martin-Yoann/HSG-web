@@ -43,6 +43,29 @@ export function SiteEffects() {
     window.addEventListener('scroll', onScroll, { passive: true, signal });
     updateBar();
     cleanup.push(() => cancelAnimationFrame(frame));
+    // A sticky panel taller than the viewport must scroll with its page.
+    const asides = document.querySelectorAll<HTMLElement>('.aside');
+    const fitAsides = () => asides.forEach(aside => {
+      aside.toggleAttribute('data-too-tall', aside.offsetHeight + 110 > window.innerHeight);
+    });
+    fitAsides();
+    window.addEventListener('resize', fitAsides, { signal });
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(fitAsides);
+      asides.forEach(aside => observer.observe(aside));
+      cleanup.push(() => observer.disconnect());
+    }
+    const updateVisibility = () => document.documentElement.toggleAttribute('data-page-hidden', document.hidden);
+    updateVisibility();
+    document.addEventListener('visibilitychange', updateVisibility, { signal });
+    const tracks = document.querySelectorAll<HTMLElement>('.strip__track');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+        entry.target.toggleAttribute('data-paused', !entry.isIntersecting);
+      }));
+      tracks.forEach(track => observer.observe(track));
+      cleanup.push(() => observer.disconnect());
+    }
     const closeMenu = () => {
       bar?.classList.remove('is-open');
       menu?.setAttribute('aria-expanded', 'false');

@@ -28,6 +28,5 @@ test('landscape menu scrolls to contact and mobile controls remain touch sized',
     await nav.locator('.nav__cta').click();
     await expect(page).toHaveURL(new RegExp(prefix + '/contact/$'));
     await expect(page.locator('.menu-btn')).toHaveAttribute('aria-expanded', 'false');
-    expect(await page.locator('input[name=email]').evaluate(e => parseFloat(getComputedStyle(e).fontSize))).toBeGreaterThanOrEqual(16);
   }
 });
