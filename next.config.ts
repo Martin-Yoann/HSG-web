@@ -14,7 +14,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // Keep historical Shopify links working while this domain serves HSG.
-      // v2.27: /contact/ belongs to the new website; legacy /pages/contact stays on Shopify.
+      // All contact entry points belong to the new website, including old bookmarks.
+      { source: '/pages/contact', destination: '/contact/', permanent: false },
+      { source: '/pages/contact-1', destination: '/contact/', permanent: false },
       { source: '/company', destination: 'https://www.happyglobalus.com/pages/companyprofile', permanent: true },
       { source: '/gummies', destination: 'https://www.happyglobalus.com/pages/candy-master', permanent: true },
       { source: '/news', destination: 'https://www.happyglobalus.com/blogs/news', permanent: true },
@@ -22,7 +24,6 @@ const nextConfig: NextConfig = {
       { source: '/cart', destination: 'https://www.happyglobalus.com/cart', permanent: true },
       { source: '/collections', destination: 'https://www.happyglobalus.com/collections', permanent: true },
       { source: '/pages/gummies', destination: 'https://www.happyglobalus.com/pages/candy-master', permanent: true },
-      { source: '/pages/contact-1', destination: 'https://www.happyglobalus.com/pages/contact', permanent: true },
       { source: '/pages/:path+', destination: 'https://www.happyglobalus.com/pages/:path+', permanent: true },
       { source: '/blogs/:path+', destination: 'https://www.happyglobalus.com/blogs/:path+', permanent: true },
       { source: '/collections/:path+', destination: 'https://www.happyglobalus.com/collections/:path+', permanent: true },

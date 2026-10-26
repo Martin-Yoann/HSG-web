@@ -65,7 +65,7 @@ npm run dev
 
 主域采用不带 www 的 `happyglobalinc.com`；www 在 Vercel 项目域名设置中永久跳转到主域。不要同时配置相反方向的跳转。
 
-`/contact/` 和 `/en/contact/` 都展示新官网的邮件联系页。历史商城 `/pages/`、`/blogs/`、`/collections/`、`/products/`、`/policies/` 等地址继续按 `next.config.ts` 跳转到 `www.happyglobalus.com`，保留查询参数。商城数据及账户由原商城平台维护，本仓库不包含商城迁移。
+`/contact/` 和 `/en/contact/` 都展示新官网的邮件联系页；历史地址 `/pages/contact/`、`/pages/contact-1/` 也转到新官网 `/contact/`，优先于商城通配跳转。历史商城 `/pages/`、`/blogs/`、`/collections/`、`/products/`、`/policies/` 等地址继续按 `next.config.ts` 跳转到 `www.happyglobalus.com`，保留查询参数。商城数据及账户由原商城平台维护，本仓库不包含商城迁移。
 
 ## 上线核对
 

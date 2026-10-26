@@ -11,6 +11,11 @@ test('release indexing and historical commerce redirects are correct', async ({ 
   for (const route of routes) expect(xml).toContain(`<loc>https://happyglobalinc.com${route.route}</loc>`);
   const contact = await request.get('/contact/', { maxRedirects: 0 });
   expect(contact.status()).toBe(200);
+  for (const path of ['/pages/contact/', '/pages/contact-1/']) {
+    const oldContact = await request.get(path + '?source=bookmark', { maxRedirects: 0 });
+    expect(oldContact.status()).toBe(307);
+    expect(oldContact.headers().location).toBe('/contact/?source=bookmark');
+  }
   const old = await request.get('/products/example/?source=old', { maxRedirects: 0 });
   expect(old.status()).toBe(308);
   expect(old.headers().location).toContain('https://www.happyglobalus.com/products/example');
