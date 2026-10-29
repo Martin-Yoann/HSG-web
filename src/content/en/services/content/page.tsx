@@ -43,7 +43,7 @@ export default function Page() {
 </div>
 </section>
 <div className="wrap">
-<nav className="tabs" aria-label="Service lines"><Link scroll={false} href="/en/services/channel/">{"Sales Channel Entry"}</Link><Link scroll={false} href="/en/services/content/" aria-current="page">{"Content & Localized Marketing"}</Link><Link scroll={false} href="/en/services/recruiting/">{"Recruiting & Search"}</Link><Link scroll={false} href="/en/services/finance-compliance/">{"Tax & Structure"}</Link><Link scroll={false} href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link scroll={false} href="/en/services/hr-ops/">{"HR & Employment"}</Link></nav>
+<nav className="tabs" aria-label="Service lines"><Link scroll={false} href="/en/services/channel/">{"Sales Channel Entry"}</Link><Link scroll={false} href="/en/services/content/" aria-current="page">{"Content & Localized Marketing"}</Link><Link scroll={false} href="/en/services/recruiting/">{"Recruiting & Headhunting"}</Link><Link scroll={false} href="/en/services/finance-compliance/">{"Finance & Structure"}</Link><Link scroll={false} href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link scroll={false} href="/en/services/hr-ops/">{"HR & Employment"}</Link></nav>
 <div className="svc">
 <div className="svc__main">
 <section><h2>{"When it applies"}</h2><ol className="numbered"><li>{"Content produced for the Chinese market rarely reaches U.S. audiences as intended."}</li><li>{"Trade shows are a significant investment; on-site footage and follow-up are often under-used."}</li><li>{"U.S. social media follows a different rhythm and register from domestic platforms."}</li></ol></section>

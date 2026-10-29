@@ -43,7 +43,7 @@ export default function Page() {
 </div>
 </section>
 <div className="wrap">
-<nav className="tabs" aria-label="Service lines"><Link scroll={false} href="/en/services/channel/">{"Sales Channel Entry"}</Link><Link scroll={false} href="/en/services/content/">{"Content & Localized Marketing"}</Link><Link scroll={false} href="/en/services/recruiting/">{"Recruiting & Search"}</Link><Link scroll={false} href="/en/services/finance-compliance/">{"Tax & Structure"}</Link><Link scroll={false} href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link scroll={false} href="/en/services/hr-ops/" aria-current="page">{"HR & Employment"}</Link></nav>
+<nav className="tabs" aria-label="Service lines"><Link scroll={false} href="/en/services/channel/">{"Sales Channel Entry"}</Link><Link scroll={false} href="/en/services/content/">{"Content & Localized Marketing"}</Link><Link scroll={false} href="/en/services/recruiting/">{"Recruiting & Headhunting"}</Link><Link scroll={false} href="/en/services/finance-compliance/">{"Finance & Structure"}</Link><Link scroll={false} href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link scroll={false} href="/en/services/hr-ops/" aria-current="page">{"HR & Employment"}</Link></nav>
 <div className="svc">
 <div className="svc__main">
 <section><h2>{"When it applies"}</h2><ol className="numbered"><li>{"No U.S. entity yet, or the first hires' employment, payroll and benefits need a proper start."}</li><li>{"Rules vary by state, and compliance from onboarding through offboarding needs ongoing attention."}</li><li>{"Key staff relocating from China need their visa process and post-arrival HR arrangements to connect."}</li></ol></section>

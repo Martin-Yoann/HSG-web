@@ -13,11 +13,11 @@ return (<footer className="footer">
 </div>
 <FooterGroup title="Services">
 
-<Link href="/en/services/channel/">{"Sales Channel Entry"}</Link><Link href="/en/services/content/">{"Content & Localized Marketing"}</Link><Link href="/en/services/recruiting/">{"Recruiting & Search"}</Link><Link href="/en/services/finance-compliance/">{"Tax & Structure"}</Link><Link href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link href="/en/services/hr-ops/">{"HR & Employment"}</Link>
+<Link href="/en/services/channel/">{"Sales Channel Entry"}</Link><Link href="/en/services/content/">{"Content & Localized Marketing"}</Link><Link href="/en/services/recruiting/">{"Recruiting & Headhunting"}</Link><Link href="/en/services/finance-compliance/">{"Finance & Structure"}</Link><Link href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link href="/en/services/hr-ops/">{"HR & Employment"}</Link>
 </FooterGroup>
 <FooterGroup title="Our Network">
 
-<Link href="/en/ecosystem/">{"Our Network"}</Link><a href="https://glimboo.com" rel="noopener">{"Glimboo"}</a><a href="https://pulseonworld.com/" rel="noopener">{"PulseOn"}</a><a href="https://happyglobals.com" rel="noopener">{"happyglobals.com"}</a>
+<Link href="/en/ecosystem/">{"Our Network"}</Link><a href="https://glimboo.com" rel="noopener">{"Glimboo"}</a><a href="https://pulseonworld.com/" rel="noopener">{"PulseOn"}</a><a href="https://happyglobalus.com" rel="noopener">{"happyglobalus.com"}</a>
 </FooterGroup>
 <FooterGroup title="Company">
 

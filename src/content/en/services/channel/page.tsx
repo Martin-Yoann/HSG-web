@@ -44,7 +44,7 @@ export default function Page() {
 </div>
 </section>
 <div className="wrap">
-<nav className="tabs" aria-label="Service lines"><Link scroll={false} href="/en/services/channel/" aria-current="page">{"Sales Channel Entry"}</Link><Link scroll={false} href="/en/services/content/">{"Content & Localized Marketing"}</Link><Link scroll={false} href="/en/services/recruiting/">{"Recruiting & Search"}</Link><Link scroll={false} href="/en/services/finance-compliance/">{"Tax & Structure"}</Link><Link scroll={false} href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link scroll={false} href="/en/services/hr-ops/">{"HR & Employment"}</Link></nav>
+<nav className="tabs" aria-label="Service lines"><Link scroll={false} href="/en/services/channel/" aria-current="page">{"Sales Channel Entry"}</Link><Link scroll={false} href="/en/services/content/">{"Content & Localized Marketing"}</Link><Link scroll={false} href="/en/services/recruiting/">{"Recruiting & Headhunting"}</Link><Link scroll={false} href="/en/services/finance-compliance/">{"Finance & Structure"}</Link><Link scroll={false} href="/en/services/warehousing/">{"Logistics & Warehousing"}</Link><Link scroll={false} href="/en/services/hr-ops/">{"HR & Employment"}</Link></nav>
 <div className="svc">
 <div className="svc__main">
 <section><h2>{"When it applies"}</h2><ol className="numbered"><li>{"Major U.S. retailers expect suppliers to have an accountable, traceable presence in the country."}</li><li>{"Labels, ingredients and packaging must meet U.S. regulations; adjustments take time."}</li><li>{"Channel margin structures and promotional calendars shape pricing and negotiation."}</li></ol></section>

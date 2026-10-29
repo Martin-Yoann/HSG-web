@@ -1,13 +1,17 @@
 # HSG-web · Happy Global Service 官网
 
-当前内容版本：**v2.27 / 2026-10-26**。正式网址：**https://happyglobalinc.com**。
+当前内容版本：**v2.28 / 2026-10-29**。正式网址：**https://happyglobalinc.com**。
 
-本项目将已确认的 v2.27 静态上线包接入 Next.js App Router、React 19 和 TypeScript，包含中文 14 页、英文 14 页，共 28 个业务页面，在构建时静态预渲染。
+本项目将已确认的 v2.28 静态上线包接入 Next.js App Router、React 19 和 TypeScript，包含中文 14 页、英文 14 页，共 28 个业务页面，在构建时静态预渲染。
 
 ## 本版内容
 
+- 英文招聘板块统一为 Recruiting & Headhunting；财税短名为 Finance & Structure，全称为 Finance & Listing-Structure Planning。
+- 产品与分销站统一为 happyglobalus.com；sitemap 的 28 条 lastmod 更新为 2026-10-29。
+- 本次按[更新清单](docs/Change-List-v2.28.md)增量合并，保留现有兼容、加载与 Gmail 联系入口；后续小更新优先采用“清单 + 完整上线包”核对方式。
+
 - 同步最新版首页、六类服务、体系、关于、常见问题与联系页面的文字和图片。
-- 增加中英文隐私政策及使用条款，最后更新日期为 2026 年 10 月 26 日。
+- 使用条款更新于 2026 年 10 月 29 日；隐私政策日期保持 2026 年 10 月 26 日。
 - 联系方式统一为 `service@happyglobalinc.com`；本版仅提供邮箱链接，不展示在线表单，不提供表单收集或服务器发信接口。
 - 首页背景视频、Open Platform Conference 和 Why Dallas 三段视频均已提供。
 - `robots.txt` 允许抓取；`sitemap.xml` 包含 28 个正式网址。canonical、hreflang、x-default 及分享地址指向正式主域。
@@ -42,10 +46,10 @@ npm run dev
 - `src/data/routes.json`、`src/data/navigation.json`：路由清单及双语导航文字。
 - `src/styles/site.css`：网站样式与响应式交互。
 - `public/assets/`：图片与三个视频；`public/robots.txt`、`public/sitemap.xml` 为抓取入口。
-- `legacy/v2.27/`：本版批准的 HTML 原稿，供逐页内容核对；`legacy/` 其他文件为初次迁移的历史备份。
+- `legacy/v2.28/`：本版批准的 HTML 原稿，供逐页内容核对；`legacy/` 其他文件为初次迁移的历史备份。
 - `scripts/import-v227.mjs`：从指定静态包导入页面及页脚；运行会覆盖正文，不用于日常增量编辑。
 - `tests/`：内容、SEO、视频、加载策略、双语切换及布局回归。
-- [原版部署说明](docs/Deploy-Notes-v2.27.md)：随本次源码提供的上线说明。
+- [本版部署说明](docs/Deploy-Notes-v2.28.md)：随本次源码提供的上线说明。
 
 日常改文案直接编辑 `src/content/`。不要运行初次迁移脚本重新覆盖项目。旧 `index.html` 地址会永久跳转到对应目录地址。
 

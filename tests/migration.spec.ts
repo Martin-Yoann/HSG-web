@@ -15,7 +15,7 @@ function originalText(file: string) {
   return texts;
 }
 
-test('all 28 routes preserve v2.27 content, metadata and language', async ({ page }) => {
+test('all 28 routes preserve v2.28 content, metadata and language', async ({ page }) => {
   const failures: string[] = [];
   page.on('pageerror', error => failures.push(error.message));
   page.on('response', response => { if (response.status() >= 400) failures.push(`${response.status()} ${response.url()}`); });

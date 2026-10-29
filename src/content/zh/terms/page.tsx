@@ -40,7 +40,7 @@ export default function Page() {
 <span className="nw">{"使用条款"}</span></h1>
 </div>
 </section>
-<section className="section"><div className="wrap"><article className="legal"><p className="legal__date">{"最后更新：2026 年 10 月 26 日"}</p>
+<section className="section"><div className="wrap"><article className="legal"><p className="legal__date">{"最后更新：2026 年 10 月 29 日"}</p>
 <h2>{"1. 欢迎与适用范围"}</h2>
 <p>{"本使用条款（下称“本条款”）适用于您访问和使用 happyglobalinc.com（下称“本网站”）。本网站由 Happy Global Inc.（一家德克萨斯州公司，下称“我们”）运营，Happy Global Service 是其服务品牌。本条款只适用于本网站。"}</p>
 <table className="legal__table"><tbody><tr><th>{"公司"}</th><td>{"Happy Global Inc."}</td></tr><tr><th>{"地址"}</th><td>{"1101 E Arapaho Rd, Suite 210, Richardson, TX 75081, USA"}</td></tr><tr><th>{"邮箱"}</th><td><a href="mailto:service@happyglobalinc.com">{"service@happyglobalinc.com"}</a></td></tr><tr><th>{"网站"}</th><td><a href="https://happyglobalinc.com/">{"https://happyglobalinc.com/"}</a></td></tr></tbody></table>
@@ -84,7 +84,7 @@ export default function Page() {
 <p>{"我们努力保持网站正常运行，但不保证不间断访问，并可随时修改、暂停或终止网站或其任何部分。网站内容可能存在错误或过时信息，我们可随时更正和更新，但除法律要求外没有更新义务；如发现错误，欢迎告诉我们。"}</p>
 <h2><span className="cl">{"12. 招聘服务、"}</span><span className="cl">{"第三方网站与链接"}</span></h2>
 <p>{"12.1 招聘与候选人。本网站对招聘与猎头服务的介绍仅供参考，相关服务不通过本网站提供。候选人流程（包括提交简历）在本网站之外进行，适用届时提供的条款和隐私告知；本网站不接收求职申请或简历。"}</p>
-<p>{"12.2 第三方网站。本网站链接的以下网站由 Happy Global Inc. 的关联公司独立运营，适用其各自的条款：Glimboo Inc.（glimboo.com）、PulseOn Inc.（pulseonworld.com）。happyglobals.com 由 Happy Global Inc. 运营，适用该网站的条款。我们不控制这些公司的网站，不对其内容、产品、条款、隐私做法或安全负责；链接不代表认可，您与第三方的往来仅在您与对方之间。"}</p>
+<p>{"12.2 第三方网站。本网站链接的以下网站由 Happy Global Inc. 的关联公司独立运营，适用其各自的条款：Glimboo Inc.（glimboo.com）、PulseOn Inc.（pulseonworld.com）。happyglobalus.com 由 Happy Global Inc. 运营，适用该网站的条款。我们不控制这些公司的网站，不对其内容、产品、条款、隐私做法或安全负责；链接不代表认可，您与第三方的往来仅在您与对方之间。"}</p>
 <p>{"12.3 链接到本网站。欢迎以纯文字链接至本网站首页或公开页面，但须公平、合法，不得损害我们的声誉；不得框架嵌入本网站，不得暗示不存在的认可或关联，不得从含违法、诽谤或侵权内容的网站链接。我们可通知撤回链接许可。"}</p>
 <h2>{"13. 免责声明"}</h2>
 <p><b>{"在适用法律允许的最大范围内，本网站及其全部内容按“现状”和“现有”提供，不附带任何明示、默示或法定的保证，包括适销性、特定用途适用性、准确性、所有权和不侵权的默示保证。我们不保证本网站不间断、及时、安全或无错误，也不保证服务器不含有害成分"}</b>{"。法律不允许排除的保证、权利或救济，不受本条影响。"}</p>

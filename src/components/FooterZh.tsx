@@ -17,7 +17,7 @@ return (<footer className="footer">
 </FooterGroup>
 <FooterGroup title="Happy Global 体系">
 
-<Link href="/ecosystem/">{"Happy Global 体系"}</Link><a href="https://glimboo.com" rel="noopener">{"Glimboo"}</a><a href="https://pulseonworld.com/" rel="noopener">{"PulseOn"}</a><a href="https://happyglobals.com" rel="noopener">{"happyglobals.com"}</a>
+<Link href="/ecosystem/">{"Happy Global 体系"}</Link><a href="https://glimboo.com" rel="noopener">{"Glimboo"}</a><a href="https://pulseonworld.com/" rel="noopener">{"PulseOn"}</a><a href="https://happyglobalus.com" rel="noopener">{"happyglobalus.com"}</a>
 </FooterGroup>
 <FooterGroup title="公司">
 
