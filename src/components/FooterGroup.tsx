@@ -1,19 +1,13 @@
 'use client';
 
-import { useEffect, useId, useState, type ReactNode } from 'react';
+import { useId, useState, type ReactNode } from 'react';
+import { useMobileLayout } from '@/lib/use-mobile-layout';
+import { AnimatedPanel } from './AnimatedPanel';
 
 export function FooterGroup({ title, children }: { title: string; children: ReactNode }) {
-  const [mobile, setMobile] = useState(true);
+  const mobile = useMobileLayout();
   const [expanded, setExpanded] = useState(false);
   const panelId = useId();
-
-  useEffect(() => {
-    const media = window.matchMedia('(max-width: 760px)');
-    const update = () => setMobile(media.matches);
-    update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
 
   return (
     <div className="footer__group" data-expanded={expanded}>
@@ -23,7 +17,7 @@ export function FooterGroup({ title, children }: { title: string; children: Reac
           {title}<span className="footer__chevron" aria-hidden="true" />
         </button>
       </h4>
-      <div id={panelId} className="footer__links" hidden={mobile && !expanded}>{children}</div>
+      <AnimatedPanel id={panelId} open={!mobile || expanded} contentClassName="footer__links">{children}</AnimatedPanel>
     </div>
   );
 }

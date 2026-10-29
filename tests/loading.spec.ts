@@ -49,6 +49,10 @@ test('constrained networks skip speculative routes and video, while clicks still
 });
 
 test('desktop video waits for the poster; mobile never downloads video', async ({ page }) => {
+  // This case covers a fast connection; the previous case covers constrained networks.
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'connection', { configurable: true, value: { saveData: false, effectiveType: '4g' } });
+  });
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');
   await expect(page.locator('.hero__video')).toHaveAttribute('src', '/assets/video/hero-loop.mp4');
