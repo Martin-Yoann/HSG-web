@@ -626,11 +626,11 @@ html[lang=en] .stat__label--split .pt{display:block}
 .video-placeholder span{position:relative;z-index:1;padding:8px 16px;border-radius:999px;background:rgba(1,29,100,.85);color:#fff;font-size:14px}
 
 /* Service banners reserve the same text rows, independently of copy length. */
-.service-hero{--service-banner-height:520px}
+.service-hero{--service-banner-height:520px;--service-kicker-height:22px;--service-title-height:106px}
 .service-hero .wrap{
   width:100%;min-block-size:var(--service-banner-height);
   padding-top:112px;padding-bottom:40px;
-  display:grid;grid-template-rows:22px 22px 106px auto;gap:10px;
+  display:grid;grid-template-rows:minmax(22px,max-content) minmax(var(--service-kicker-height),max-content) minmax(var(--service-title-height),max-content) auto;gap:10px;
   align-content:stretch;
 }
 .service-hero .crumbs{grid-row:1;margin:0;align-self:start}
@@ -684,19 +684,25 @@ html[lang=en] .stat__label--split .pt{display:block}
   .btn:hover,.scard:hover,.etile:hover,.vcard:hover,.scard:hover .icon,.scard:hover .scard__more,.mosaic img:hover,.tile:hover img,.etile:hover img,.strip__item:hover img{transform:none}
 }
 @media (max-width:900px){
-  .service-hero{--service-banner-height:560px}
-  .service-hero .wrap{padding-top:112px;padding-bottom:36px;grid-template-rows:22px 22px 92px auto}
+  .service-hero{--service-banner-height:560px;--service-title-height:92px}
+  .service-hero .wrap{padding-top:112px;padding-bottom:36px}
   .service-hero h1{font-size:38px}
   .service-hero p{font-size:17px}
 }
+@media (max-width:700px){
+  html[lang=en] .service-hero{--service-banner-height:680px}
+}
 @media (max-width:560px){
-  .service-hero .wrap{padding-top:108px;padding-bottom:32px;grid-template-rows:22px 22px 112px auto;gap:8px}
+  .service-hero{--service-title-height:112px}
+  .service-hero .wrap{padding-top:108px;padding-bottom:32px;gap:8px}
   .service-hero h1{font-size:32px;line-height:1.16}
   .service-hero p{font-size:16px;line-height:1.7}
-  html[lang=en] .service-hero{--service-banner-height:720px}
+  html[lang=en] .service-hero{--service-banner-height:760px;--service-kicker-height:44px}
+}
+@media (max-width:420px){
+  .service-hero{--service-banner-height:620px}
 }
 @media (max-width:370px){
-  .service-hero{--service-banner-height:620px}
   .service-hero h1{font-size:28px}
   html[lang=en] .service-hero{--service-banner-height:840px}
 }

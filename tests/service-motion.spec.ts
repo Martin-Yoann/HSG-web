@@ -4,10 +4,10 @@ import routes from '../src/data/routes.json';
 const services = routes.filter(route => route.route.includes('/services/'));
 
 test('service banners and text rows align at desktop, tablet and phone widths', async ({ page }) => {
-  test.setTimeout(120_000);
+  test.setTimeout(180_000);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   const measurements: Record<string, number> = {};
-  for (const width of [1440, 1024, 768, 560, 390, 320]) {
+  for (const width of [1920, 1440, 1280, 1024, 900, 768, 701, 700, 600, 561, 560, 430, 421, 420, 390, 375, 371, 370, 320]) {
     await page.setViewportSize({ width, height: 900 });
     for (const locale of ['zh', 'en']) {
       const dimensions: { height: number; titleTop: number; descriptionTop: number }[] = [];
@@ -16,16 +16,19 @@ test('service banners and text rows align at desktop, tablet and phone widths', 
         const geometry = await page.locator('.service-hero').evaluate(hero => {
           const banner = hero.getBoundingClientRect();
           const title = hero.querySelector('h1')!.getBoundingClientRect();
+          const kicker = hero.querySelector('.kicker')!.getBoundingClientRect();
           const description = hero.querySelector('p')!.getBoundingClientRect();
           return {
             height: banner.height,
             titleTop: title.top - banner.top,
             descriptionTop: description.top - banner.top,
+            kickerFits: kicker.bottom + 7 <= title.top,
             textFits: description.bottom <= banner.bottom - 24 && title.bottom <= description.top,
             noOverflow: document.documentElement.scrollWidth <= window.innerWidth,
           };
         });
         expect(geometry.textFits, `${width}px ${route.route}: complete text must fit`).toBe(true);
+        expect(geometry.kickerFits, `${width}px ${route.route}: kicker must not overlap title`).toBe(true);
         expect(geometry.noOverflow, `${width}px ${route.route}: no horizontal overflow`).toBe(true);
         dimensions.push(geometry);
       }
@@ -37,6 +40,21 @@ test('service banners and text rows align at desktop, tablet and phone widths', 
     }
   }
   console.log('Service banner heights:', measurements);
+});
+
+test('service banners grow their text rows when the text size increases', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setViewportSize({ width: 320, height: 568 });
+  for (const route of ['/en/services/recruiting/', '/en/services/finance-compliance/']) {
+    await page.goto(route);
+    await page.addStyleTag({ content: '.service-hero .kicker{font-size:20px}.service-hero h1{font-size:36px}' });
+    expect(await page.locator('.service-hero').evaluate(hero => {
+      const kicker = hero.querySelector('.kicker')!.getBoundingClientRect();
+      const title = hero.querySelector('h1')!.getBoundingClientRect();
+      const body = hero.querySelector('p')!.getBoundingClientRect();
+      return kicker.bottom < title.top && title.bottom < body.top && body.bottom <= hero.getBoundingClientRect().bottom - 24;
+    }), route).toBe(true);
+  }
 });
 
 test('service tabs preserve scroll position on client navigation', async ({ page }) => {

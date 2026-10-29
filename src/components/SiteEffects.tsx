@@ -79,6 +79,10 @@ export function SiteEffects() {
     bar?.addEventListener('click', event => {
       if ((event.target as Element).closest('a')) closeMenu();
     }, { signal });
+    window.matchMedia('(max-width: 1180px)').addEventListener('change', closeMenu, { signal });
+    document.addEventListener('pointerdown', event => {
+      if (bar?.classList.contains('is-open') && event.target instanceof Node && !bar.contains(event.target)) closeMenu();
+    }, { signal });
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && bar?.classList.contains('is-open')) {
         closeMenu();
