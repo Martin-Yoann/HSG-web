@@ -34,7 +34,7 @@ main[id=main]{scroll-margin-top:88px}
 
 /* ---------- 页眉 ---------- */
 /* 固定页眉：首屏上透明压在画面上，向下滚动后变白底深蓝字（参考安克创新） */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;color:#fff;transition:background .35s ease,box-shadow .35s ease,color .35s ease}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(1,29,100,.88);color:#fff;transition:background .35s ease,box-shadow .35s ease,color .35s ease}
 .topbar::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,20,70,.55),rgba(1,20,70,0));pointer-events:none;opacity:1;transition:opacity .35s}
 .topbar .wrap{position:relative;display:flex;align-items:center;gap:24px;min-height:72px;max-width:1440px}
 .topbar.is-solid{background:rgba(255,255,255,.96);color:var(--navy);box-shadow:0 1px 0 rgba(1,29,100,.08),0 10px 30px rgba(1,29,100,.08);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
@@ -158,7 +158,7 @@ body.no-hero main{padding-top:72px}
 .hero__slogan::before{content:"— ";color:var(--green)}
 .hero__ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.stat{background:rgba(1,29,100,.58);border:1px solid rgba(255,255,255,.22);border-radius:var(--radius);padding:20px 22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.stat{background:rgba(1,29,100,.82);border:1px solid rgba(255,255,255,.22);border-radius:var(--radius);padding:20px 22px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
 .stat__num{font-size:28px;font-weight:900;line-height:1.1;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
 .stat__num small{font-size:14px;color:var(--muted-2)}
 .stat__label{font-size:13.5px;color:var(--muted-2);margin-top:6px}
@@ -166,7 +166,7 @@ body.no-hero main{padding-top:72px}
 .stat__split b{color:#fff}
 .stat__split i{width:1px;height:12px;background:rgba(255,255,255,.3)}
 .proof{grid-column:1/-1;display:flex;gap:10px 24px;flex-wrap:wrap;font-size:14px;color:#fff;margin-top:4px;text-shadow:0 1px 8px rgba(0,0,0,.55)}
-.proof li{list-style:none;display:flex;align-items:center;gap:8px}
+.proof li{list-style:none;display:flex;align-items:center;gap:8px;padding:4px 8px;border-radius:6px;background:rgba(1,29,100,.82)}
 .proof li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green)}
 .proof{padding:0;margin:0}
 
@@ -308,7 +308,7 @@ body.no-hero main{padding-top:72px}
 /* ---------- 页内标题（子页） ---------- */
 .page-hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
 .page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1}
-.page-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,29,100,.9) 0%,rgba(1,29,100,.68) 38%,rgba(1,29,100,.15) 68%,rgba(1,29,100,0) 85%)}
+.page-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(1,29,100,.92) 0%,rgba(1,29,100,.82) 60%,rgba(1,29,100,.76) 100%)}
 .page-hero .wrap{position:relative;z-index:1;padding-top:140px;padding-bottom:84px}
 .page-hero::before{content:"";position:absolute;inset:0 0 auto;height:140px;background:linear-gradient(180deg,rgba(1,20,70,.5),rgba(1,20,70,0));z-index:1;pointer-events:none}
 .page-hero h1{font-size:52px;margin-top:16px}
@@ -449,7 +449,7 @@ body.no-hero main{padding-top:72px}
   .hero .wrap{padding-top:120px;padding-bottom:64px;gap:32px}
   .page-hero .wrap{padding-top:120px;padding-bottom:64px}
   .hero::after{background:linear-gradient(180deg,rgba(1,29,100,.78) 0%,rgba(1,29,100,.62) 55%,rgba(1,29,100,.82) 100%)}
-  .page-hero::after{background:linear-gradient(90deg,rgba(1,29,100,.88),rgba(1,29,100,.6))}
+  .page-hero::after{background:linear-gradient(90deg,rgba(1,29,100,.9),rgba(1,29,100,.78))}
   .hero h1{font-size:40px}
   .qgrid,.sgrid,.eco,.explain{grid-template-columns:1fr}
   .timeline{grid-template-columns:1fr 1fr}
@@ -916,3 +916,6 @@ html{scroll-padding-top:88px}
 .motion-paused .strip__track,.motion-paused .hero__poster,.motion-paused .hero__scroll span{animation-play-state:paused}
 @media(max-width:560px){.motion-toggle{left:16px;bottom:16px}}
 @media(prefers-reduced-motion:reduce){.motion-toggle{display:none}}
+
+/* Keep captions readable over bright footage without fixing their font size. */
+video::cue{color:#fff;background-color:rgba(0,0,0,.88);text-shadow:none}
