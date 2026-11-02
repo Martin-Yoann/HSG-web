@@ -74,7 +74,7 @@ export default function Page() {
 <div className="head-split"><div><div className="kicker">{"Corporate film"}</div><h2 className="title rv">{"Why we chose Dallas"}</h2></div><p className="lead">{"A colleague from our U.S. marketing team on the economy, talent and logistics of Dallas, and why we made it our headquarters."}</p></div>
 <div className="videos">
 <figure className="vcard rv" style={{"--i":"0"} as CSSProperties}>
-<DeferredVideo poster="/assets/img/poster-dallas.jpg" src="/assets/video/why-dallas.mp4" />
+<DeferredVideo poster="/assets/img/poster-dallas.jpg" src="/assets/video/why-dallas.mp4" locale="en" />
 <figcaption><small>{"Why Dallas"}</small><b>{"Why we chose Dallas"}</b><span>{"A colleague from our U.S. marketing team on the economy, talent and logistics of Dallas, and why we made it our headquarters."}</span></figcaption>
 </figure>
 </div>

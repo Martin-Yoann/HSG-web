@@ -58,6 +58,7 @@ export default function Page() {
 <ul className="proof"><li>{"Hands-on implementation & execution"}</li><li>{"A U.S.-based contracting party"}</li><li>{"Bilingual team"}</li></ul>
 </div>
 </div>
+<button className="motion-toggle" type="button" aria-pressed="false" data-pause="Pause motion" data-play="Play motion"><span className="motion-toggle__icon" aria-hidden="true" /><span className="motion-toggle__txt">Pause motion</span></button>
 <a className="hero__scroll" href="#strip" aria-label="Slideshow"><span></span></a>
 </section>
 <section className="strip" id="strip" aria-label="Slideshow">
@@ -78,7 +79,7 @@ export default function Page() {
 <figcaption><small>{"Open Platform Conference · Dallas"}</small><b>{"Inside the Open Platform Conference"}</b><span>{"We brought together the legal, tax and channel partners we work with and the brand companies we serve to discuss the practical questions of entering the U.S. market."}</span></figcaption>
 </figure>
 <figure className="vcard rv" style={{"--i":"1"} as CSSProperties}>
-<DeferredVideo poster="/assets/img/poster-dallas.jpg" src="/assets/video/why-dallas.mp4" />
+<DeferredVideo poster="/assets/img/poster-dallas.jpg" src="/assets/video/why-dallas.mp4" locale="en" />
 <figcaption><small>{"Why Dallas"}</small><b>{"Why we chose Dallas"}</b><span>{"A colleague from our U.S. marketing team on the economy, talent and logistics of Dallas, and why we made it our headquarters."}</span></figcaption>
 </figure>
 </div>

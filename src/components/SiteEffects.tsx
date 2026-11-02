@@ -144,15 +144,18 @@ export function SiteEffects() {
     }, { signal });
 
     const video = document.querySelector<HTMLVideoElement>('.hero__video');
+    let syncHeroMotion = () => { video?.pause(); };
     if (video && !reduce && window.innerWidth >= 760 && allowSpeculativeLoading() && video.dataset.src) {
       let visible = video.getBoundingClientRect().bottom > 0;
       let ready = false;
       const play = () => {
-        if (ready && visible && !document.hidden && !motionPreference.matches && allowSpeculativeLoading()) {
+        if (ready && visible && !document.hidden && !motionPreference.matches && !document.documentElement.classList.contains('motion-paused') && allowSpeculativeLoading()) {
           if (video.getAttribute('src') !== video.dataset.src) video.src = video.dataset.src!;
           void video.play().catch(() => {});
         } else video.pause();
       };
+      syncHeroMotion = play;
+      motionPreference.addEventListener('change', play, { signal });
       video.addEventListener('playing', () => video.classList.add('is-ready'), { once: true, signal });
       cleanup.push(afterPageLoadIdle(() => {
         const poster = document.querySelector<HTMLImageElement>('.hero__poster');
@@ -174,6 +177,20 @@ export function SiteEffects() {
       document.addEventListener('visibilitychange', play, { signal });
       cleanup.push(() => video.pause());
     }
+
+    const motionToggle = document.querySelector<HTMLButtonElement>('.motion-toggle');
+    const syncMotionButton = () => {
+      const paused = document.documentElement.classList.contains('motion-paused');
+      motionToggle?.setAttribute('aria-pressed', String(paused));
+      const label = motionToggle?.querySelector('.motion-toggle__txt');
+      if (label) label.textContent = (paused ? motionToggle?.dataset.play : motionToggle?.dataset.pause) || '';
+    };
+    syncMotionButton();
+    motionToggle?.addEventListener('click', () => {
+      document.documentElement.classList.toggle('motion-paused');
+      syncMotionButton();
+      syncHeroMotion();
+    }, { signal });
 
     const contentVideos = document.querySelectorAll<HTMLVideoElement>('video[data-poster]');
     const loadPoster = (target: HTMLVideoElement) => {
