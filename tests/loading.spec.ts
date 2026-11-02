@@ -33,6 +33,52 @@ test('hero is responsive and preloaded; distant photos load on scroll', async ({
   expect(requests.some(url => url.includes('us-chamber-shay'))).toBe(true);
 });
 
+test('video posters use the displayed width and screen density without fetching the movie', async ({ browser }) => {
+  for (const profile of [{ width: 390, height: 844, dpr: 2 }, { width: 1440, height: 900, dpr: 1 }]) {
+    const context = await browser.newContext({ viewport: profile, deviceScaleFactor: profile.dpr, reducedMotion: 'reduce' });
+    try {
+      const page = await context.newPage();
+      const movies: string[] = [];
+      page.on('request', request => { if (request.url().includes('.mp4')) movies.push(request.url()); });
+      await page.goto('/en/about/');
+      const video = page.locator('video[data-poster]').first();
+      await expect(video).not.toHaveAttribute('poster');
+      await video.scrollIntoViewIfNeeded();
+      await expect(video).toHaveAttribute('poster', /\/_next\/image/);
+      const { selected, required, quality } = await video.evaluate((element: HTMLVideoElement) => {
+        const url = new URL(element.poster);
+        return { selected: Number(url.searchParams.get('w')), required: element.getBoundingClientRect().width * devicePixelRatio, quality: url.searchParams.get('q') };
+      });
+      expect(selected).toBeGreaterThanOrEqual(Math.min(required, 1920));
+      expect(selected).toBeLessThan(required * 1.35);
+      expect(quality).toBe('65');
+      expect(movies).toEqual([]);
+      if (profile.width === 390) {
+        await page.setViewportSize({ width: 1440, height: 900 });
+        await expect.poll(() => video.evaluate((element: HTMLVideoElement) => Number(new URL(element.poster).searchParams.get('w')))).toBeGreaterThan(selected);
+      }
+    } finally { await context.close(); }
+  }
+});
+
+test('photo strip candidates match phone and tablet card sizes', async ({ browser }) => {
+  for (const width of [390, 800]) {
+    const context = await browser.newContext({ viewport: { width, height: 844 }, deviceScaleFactor: 2, reducedMotion: 'reduce' });
+    try {
+      const page = await context.newPage();
+      await page.goto('/');
+      const photo = page.locator('.strip__item img').first();
+      await photo.scrollIntoViewIfNeeded();
+      await expect.poll(() => photo.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true);
+      const candidate = await photo.evaluate((image: HTMLImageElement) => {
+        const url = new URL(image.currentSrc);
+        return { width: url.searchParams.get('w'), quality: url.searchParams.get('q'), rendered: image.getBoundingClientRect().width };
+      });
+      expect(candidate).toEqual({ width: '520', quality: '60', rendered: 260 });
+    } finally { await context.close(); }
+  }
+});
+
 test('constrained networks skip speculative routes and video, while clicks still navigate', async ({ page }) => {
   await page.addInitScript(() => {
     Object.defineProperty(navigator, 'connection', { configurable: true, value: { saveData: true, effectiveType: '3g' } });

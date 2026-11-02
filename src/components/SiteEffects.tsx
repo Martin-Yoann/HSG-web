@@ -197,8 +197,25 @@ export function SiteEffects() {
     }, { signal });
 
     const contentVideos = document.querySelectorAll<HTMLVideoElement>('video[data-poster]');
+    const posterImages = new Map<HTMLVideoElement, HTMLImageElement>();
     const loadPoster = (target: HTMLVideoElement) => {
-      if (!target.poster && target.dataset.poster) target.poster = target.dataset.poster;
+      if (!target.dataset.poster) return;
+      // Let the browser select a responsive candidate before assigning the native poster.
+      const width = Math.ceil(target.getBoundingClientRect().width);
+      const sizes = width > 0 ? `${width}px` : target.dataset.posterSizes || '100vw';
+      const previous = posterImages.get(target);
+      if (previous?.sizes === sizes) return;
+      const image = previous || new Image();
+      posterImages.set(target, image);
+      image.sizes = sizes;
+      image.srcset = target.dataset.posterSrcset || '';
+      image.src = target.dataset.poster;
+      void image.decode().then(() => {
+        if (!signal.aborted) target.poster = image.currentSrc || image.src;
+      }).catch(() => {
+        // Keep the original candidate as a usable fallback if decoding is unavailable.
+        if (!signal.aborted) target.poster = image.currentSrc || target.dataset.poster!;
+      });
     };
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver(entries => {
@@ -211,6 +228,13 @@ export function SiteEffects() {
       contentVideos.forEach(target => observer.observe(target));
       cleanup.push(() => observer.disconnect());
     } else contentVideos.forEach(loadPoster);
+    if ('ResizeObserver' in window) {
+      const observer = new ResizeObserver(entries => entries.forEach(({ target }) => {
+        if (posterImages.has(target as HTMLVideoElement)) loadPoster(target as HTMLVideoElement);
+      }));
+      contentVideos.forEach(target => observer.observe(target));
+      cleanup.push(() => observer.disconnect());
+    }
 
     return () => {
       controller.abort();

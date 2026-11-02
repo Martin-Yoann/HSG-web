@@ -7,7 +7,8 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     formats: ['image/webp'],
-    deviceSizes: [480, 640, 750, 828, 1080, 1280, 1600, 1920],
+    qualities: [60, 65, 75],
+    deviceSizes: [480, 520, 640, 750, 828, 1080, 1280, 1600, 1920],
     imageSizes: [96, 160, 256, 320, 384],
     minimumCacheTTL: 14400,
   },
