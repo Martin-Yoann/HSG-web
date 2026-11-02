@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (<>
 <StructuredData data={[{"@context":"https://schema.org","@type":"Organization","address":{"@type":"PostalAddress","addressCountry":"US","addressLocality":"Dallas","addressRegion":"TX"},"alternateName":"Happy Global Service","areaServed":"US","description":"Happy Global Service 是 Happy Global Inc. 的服务品牌，总部位于美国达拉斯，在洛杉矶设有办事处，为进入美国市场的品牌企业提供销售渠道、内容与本地化营销、招聘与猎头、财税与上市架构规划、跨境物流与仓储履约、人力资源运营与合规用工服务。","name":"Happy Global Inc.","slogan":"Happy Global，出海美国的靠谱伙伴。","url":"https://happyglobalinc.com/"},{"@context":"https://schema.org","@type":"Service","areaServed":"US","description":"协助品牌进入美国线下与线上销售渠道。渠道准入要求、标签与合规、定价体系与谈判节奏，均以自有品牌的实践为基础。","name":"销售渠道服务","provider":{"@type":"Organization","name":"Happy Global Inc."}}]} />
-<main id="main">
+<main id="main" tabIndex={-1}>
 <section className="page-hero service-hero">
 <SiteImage src="/assets/img/base-merch-wall.jpg" alt="" width="1050" height="1400" loading="eager" decoding="async" />
 <div className="wrap">

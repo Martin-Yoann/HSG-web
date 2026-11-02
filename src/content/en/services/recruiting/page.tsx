@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (<>
 <StructuredData data={[{"@context":"https://schema.org","@type":"Organization","address":{"@type":"PostalAddress","addressCountry":"US","addressLocality":"Dallas","addressRegion":"TX"},"alternateName":"Happy Global Service","areaServed":"US","description":"Happy Global Service, the service brand of Happy Global Inc., is headquartered in Dallas, Texas, with a base in Los Angeles. We help brands enter and operate in the U.S. — sales channels, content and localized marketing, recruiting and executive search, tax and listing-structure planning, cross-border logistics and fulfillment, and HR operations and employment compliance.","name":"Happy Global Inc.","slogan":"Happy Global — your partner on the ground in the U.S.","url":"https://happyglobalinc.com/"},{"@context":"https://schema.org","@type":"Service","areaServed":"US","description":"Executive search and professional recruiting for companies entering the U.S. market, plus talent advisory such as compensation benchmarking and organization design. We built our own U.S. team this way first.","name":"Recruiting & Headhunting","provider":{"@type":"Organization","name":"Happy Global Inc."}}]} />
-<main id="main">
+<main id="main" tabIndex={-1}>
 <section className="page-hero service-hero">
 <SiteImage src="/assets/img/hero-lobby.jpg" alt="" width="1920" height="1080" loading="eager" decoding="async" />
 <div className="wrap">

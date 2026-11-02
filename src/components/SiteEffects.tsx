@@ -71,13 +71,17 @@ export function SiteEffects() {
       menu?.setAttribute('aria-expanded', 'false');
       if (menu) menu.setAttribute('aria-label', menu.dataset.openLabel || 'Menu');
     };
-    menu?.addEventListener('click', () => {
+    menu?.addEventListener('click', event => {
       const open = bar?.classList.toggle('is-open');
       menu.setAttribute('aria-expanded', String(Boolean(open)));
       menu.setAttribute('aria-label', (open ? menu.dataset.closeLabel : menu.dataset.openLabel) || 'Menu');
+      if (open && event.detail === 0) bar?.querySelector<HTMLAnchorElement>('nav a')?.focus();
     }, { signal });
     bar?.addEventListener('click', event => {
       if ((event.target as Element).closest('a')) closeMenu();
+    }, { signal });
+    bar?.addEventListener('focusout', event => {
+      if (event.relatedTarget instanceof Node && !bar.contains(event.relatedTarget)) closeMenu();
     }, { signal });
     window.matchMedia('(max-width: 1180px)').addEventListener('change', closeMenu, { signal });
     document.addEventListener('pointerdown', event => {

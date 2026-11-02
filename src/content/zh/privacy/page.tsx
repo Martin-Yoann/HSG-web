@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (<>
 <StructuredData data={[{"@context":"https://schema.org","@type":"Organization","address":{"@type":"PostalAddress","addressCountry":"US","addressLocality":"Dallas","addressRegion":"TX"},"alternateName":"Happy Global Service","areaServed":"US","description":"Happy Global Service 是 Happy Global Inc. 的服务品牌，总部位于美国达拉斯，在洛杉矶设有办事处，为进入美国市场的品牌企业提供销售渠道、内容与本地化营销、招聘与猎头、财税与上市架构规划、跨境物流与仓储履约、人力资源运营与合规用工服务。","name":"Happy Global Inc.","slogan":"Happy Global，出海美国的靠谱伙伴。","url":"https://happyglobalinc.com/"}]} />
-<main id="main">
+<main id="main" tabIndex={-1}>
 <section className="page-hero legal-hero">
 <div className="wrap">
 <div className="kicker" style={{"marginTop":"10px"} as CSSProperties}>{"隐私政策"}</div>

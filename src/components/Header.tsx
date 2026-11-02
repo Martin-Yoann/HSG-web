@@ -1,5 +1,6 @@
 import { Logo } from './Logo';
 import { NavLink, LanguageSwitch } from './Navigation';
+import { ServicesNavigation } from './ServicesNavigation';
 import type { Locale } from '@/lib/locale';
 
 const slugs = ['channel', 'content', 'recruiting', 'finance-compliance', 'warehousing', 'hr-ops'];
@@ -13,15 +14,12 @@ export function Header({ locale }: { locale: Locale }) {
       <NavLink className="logo" href={`${prefix}/`}><Logo /></NavLink>
       <nav id="main-navigation" className="nav" aria-label={copy.nav}>
         <NavLink href={`${prefix}/`}>{copy.home}</NavLink>
-        <div className="nav__item has-menu">
-          <NavLink href={`${prefix}/services/`}>{copy.services}<span className="caret" aria-hidden="true" /></NavLink>
-          <div className="menu" role="menu"><div className="menu__grid">
-            {copy.items.map(([icon, title, description], index) => <NavLink key={slugs[index]} className="menu__link" role="menuitem" href={`${prefix}/services/${slugs[index]}/`}>
+        <ServicesNavigation href={`${prefix}/services/`} title={copy.services} toggleLabel={locale === 'en' ? 'Toggle services menu' : '展开或收起服务菜单'}>
+            {copy.items.map(([icon, title, description], index) => <NavLink key={slugs[index]} className="menu__link" href={`${prefix}/services/${slugs[index]}/`}>
               <span className="menu__icon" style={locale === 'zh' || icon === 'HR' ? { fontSize: 14 } : undefined}>{icon}</span>
               <b>{title}</b><small>{description}</small>
             </NavLink>)}
-          </div></div>
-        </div>
+        </ServicesNavigation>
         <NavLink href={`${prefix}/ecosystem/`}>{copy.network}</NavLink>
         <NavLink href={`${prefix}/about/`}>{copy.about}</NavLink>
         <NavLink className="nav__cta" href={`${prefix}/contact/`}>{copy.contact}</NavLink>

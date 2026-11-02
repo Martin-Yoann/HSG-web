@@ -16,7 +16,7 @@ export function SiteDocument({ children, chineseFooter, englishFooter }: {
   const pathname = publicPath(usePathname());
   const locale = /^\/en(?:\/|$)/.test(pathname) ? 'en' : 'zh';
   return <html lang={locale === 'en' ? 'en' : 'zh-CN'}><body>
-    <a className="sr-only" href="#main">{locale === 'en' ? 'Skip to content' : '跳到正文'}</a>
+    <a className="skip-link" href="#main" onClick={() => document.getElementById('main')?.focus({ preventScroll: true })}>{locale === 'en' ? 'Skip to content' : '跳到正文'}</a>
     <Header locale={locale} />
     {children}
     {locale === 'en' ? englishFooter : chineseFooter}
